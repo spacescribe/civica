@@ -1,0 +1,7 @@
+langchain
+chromadb
+groq
+streamlit
+beautifulsoup4
+tqdm
+unstructured
