@@ -18,4 +18,8 @@ def get_chroma(embedding_func=None, persist_dir=CHROMA_DIR, create_if_missing=Fa
             persist_directory=persist_dir,
             embedding_function=embedding_func,
         )
+    return Chroma(
+            persist_directory=persist_dir,
+            embedding_function=embedding_func,
+        )
     

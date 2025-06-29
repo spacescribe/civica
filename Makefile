@@ -1,7 +1,10 @@
-.PHONY: ingest install test lint clean
+.PHONY: ingest install test lint clean retrieve
 
 ingest:
 	python3 -m ingestion.ingest_local
+
+retrieve:
+	python3 -m retrieval.retriever
 
 install:
 	pip install -r requirements.txt

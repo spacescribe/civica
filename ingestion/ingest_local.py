@@ -28,11 +28,11 @@ def load_documents():
 def main():
     print("Loading documents...")
     docs=load_documents()
-    print(f"Loaded ${len(docs)} documents.")
+    print(f"Loaded {len(docs)} documents.")
 
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50
+        chunk_size=1000,
+        chunk_overlap=100
     )
 
     print("Splitting into chunks...")
