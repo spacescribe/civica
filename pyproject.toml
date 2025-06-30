@@ -16,5 +16,6 @@ dependencies = [
     "sentence-transformers>=4.1.0",
     "streamlit>=1.46.1",
     "tqdm>=4.67.1",
+    "trafilatura>=2.0.0",
     "unstructured>=0.18.1",
 ]

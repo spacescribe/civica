@@ -14,7 +14,7 @@ def main():
         return_source_documents=True,
     )
 
-    query=("What are the fundamental rights under the Indian consistution?")
+    query=("what are the rights provided to every citizen of India from a human rights perspective?")
     res=qa.invoke(query)
 
     print(res["result"])
