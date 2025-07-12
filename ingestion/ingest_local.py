@@ -25,14 +25,14 @@ def load_documents():
     
     return documents
 
-def main():
+def ingest_local(chroma_db):
     print("Loading documents...")
     docs=load_documents()
     print(f"Loaded {len(docs)} documents.")
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
-        chunk_overlap=100
+        chunk_overlap=200
     )
 
     print("Splitting into chunks...")
@@ -40,12 +40,12 @@ def main():
     print(f"Total number of chunks {len(split_docs)}")
 
     print("Creating Chroma vectorstore...")
-    chromadb=get_chroma(create_if_missing=True)
+    # chromadb=get_chroma(create_if_missing=True)
 
-    chromadb.add_documents(split_docs)
+    chroma_db.add_documents(split_docs)
     # chromadb.persist()
     print("Ingestion complete!")
 
-if __name__=="__main__":
-    main()
-
+if __name__ == "__main__":
+    chroma_db = get_chroma()
+    ingest_local(chroma_db)
