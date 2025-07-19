@@ -5,6 +5,7 @@ from rich.console import Console
 
 console=Console()
 
+
 retriever=get_db().as_retriever(search_kwargs={"k":20})
 
 def query(question):
