@@ -6,6 +6,7 @@ from langchain_core.documents import Document
 class GraphState(TypedDict):
     question: str
     rephrased_question: str
+    chat_history: List
     retrieved_docs: List[Document]
     reranked_docs: List[Document]
     answer: str
