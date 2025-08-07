@@ -3,6 +3,7 @@ import json
 from evaluation.llm_critique import llm_critique
 from rich.console import Console
 from langgraph_pipeline.build_graph import graph
+from agentic_pipeline.run_agent import run_agentic_query
 
 console=Console()
 
@@ -21,6 +22,10 @@ def run_chatbot_query_pipeline(question: str, chat_history: list =None):
 def main():
     console.print("\n[bold blue]Civica - Your own AI legal assistant[/bold blue]\n")
 
+    mode = console.input(
+            "[bold magenta]Choose mode:[/bold magenta] [1] RAG (default) | [2] Agentic\n> "
+        ).strip()
+
     chat_history = []
 
     while True:
@@ -29,9 +34,12 @@ def main():
         if question.strip().lower() in {"exit", "quit"}:
             console.print("\n[bold yellow]Goodbye! 👋[/bold yellow]")
             break
+            
+        if mode == "2":
+            response = run_agentic_query(question, chat_history=chat_history)
 
-        # response, context=query(question)
-        response = run_chatbot_query_pipeline(question, chat_history)
+        else:
+            response = run_chatbot_query_pipeline(question, chat_history)
 
         console.print("[bold green]Answer: [/bold green]")
         console.print(response)

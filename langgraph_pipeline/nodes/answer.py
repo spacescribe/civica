@@ -33,12 +33,14 @@ answer_chain = create_stuff_documents_chain(
 )
 
 def answer_node(state: dict) -> dict:
-    reranked_docs = state["reranked_docs"]
+    docs = state.get("reranked_docs") or state.get("retrieved_docs")
+    if not docs:
+        raise ValueError("No documents found for answering. Did you forget to run retrieve or rerank?")
     question = state["question"]
 
     console.print(f"[cyan]Generating the answer...[/cyan]")
     response = answer_chain.invoke({
-        "context": reranked_docs,
+        "context": docs,
         "input": question
     })
 
